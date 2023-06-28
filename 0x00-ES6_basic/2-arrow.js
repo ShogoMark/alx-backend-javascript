@@ -5,10 +5,9 @@ const getNeighborhoodsList = () => {
     sanFranciscoNeighborhoods.push(newNeighborhood);
     return this.sanFranciscoNeighborhoods;
   };
-  
   return {
     addNeighborhood,
   };
 };
 
-export default getNeighborhoodsList:
+export default getNeighborhoodsList;
