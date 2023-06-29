@@ -1,4 +1,4 @@
-import ClassRoom from './0-classroom.js';
+import ClassRoom from './0-classroom';
 
 // eslint-disable-next-line no-unused-vars
 function initializeRooms() {
