@@ -8,4 +8,5 @@ const getStudentsByLocation = (data, city) => {
   return studentsFiltered;
 };
 
+
 export default getStudentsByLocation;
