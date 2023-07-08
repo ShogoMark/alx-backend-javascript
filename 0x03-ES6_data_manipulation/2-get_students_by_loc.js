@@ -4,9 +4,8 @@ const getStudentsByLocation = (data, city) => {
     { id: 2, firstName: 'James', location: 'Columbia' },
     { id: 5, firstName: 'Serena', location: 'San Francisco' },
   ];
-  const studentsFiltered = students.filter((student) => student.location === city));
+  const studentsFiltered = students.filter((student) => student.location === city);
   return studentsFiltered;
 };
-
 
 export default getStudentsByLocation;
