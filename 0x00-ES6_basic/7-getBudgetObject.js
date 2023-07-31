@@ -1,4 +1,4 @@
-#!/bin/usr/node
+#!/usr/bin/node
 
 export default function getBudgetObject(income, gdp, capita) {
   const budget = {
