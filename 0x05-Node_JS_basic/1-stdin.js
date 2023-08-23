@@ -15,9 +15,9 @@ function runProgram() {
       rl.close();
     } else {
       const ls = spawn('ls', ['-lh', '/usr']);
-      ls.stdout.on('data', (data) => {
+      ls.stdout.on('data', (_) => {
         console.log(`Your name is: ${name}`);
-        console.log(`ls command output:\n${data}`);
+        console.log(data.toString());
       });
     }
   });
