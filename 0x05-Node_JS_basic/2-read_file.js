@@ -2,36 +2,37 @@ const fs = require('fs');
 
 function countStudents(path) {
   try {
-    const data = fs.readFileSync(path, 'utf-8');
-    const lines = data.split('\n').filter(line => line.trim() !== '');
+    const fileContent = fs.readFileSync(path, 'utf8');
+    const lines = fileContent.trim().split('\n');
 
-    const fieldCounts = {};
+    lines.shift(); // Remove header line
 
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',');
+    let totalStudents = 0;
+    const studentsByField = {};
 
-      if (values.length !== 4) {
-        console.error(`Malformed data in line ${i + 1}.`);
-        continue;
-      }
+    lines.forEach((line) => {
+      const [firstname, , , field] = line.split(',');
 
-      const [, , , field] = values;
+      if (field) {
+        totalStudents += 1;
 
-      if (field && field.trim() !== '') {
-        if (!fieldCounts[field]) {
-          fieldCounts[field] = {
+        if (studentsByField[field]) {
+          studentsByField[field].count += 1;
+          studentsByField[field].list.push(firstname);
+        } else {
+          studentsByField[field] = {
             count: 1,
-            names: []
+            list: [firstname],
           };
         }
-        fieldCounts[field].count++;
       }
-    }
+    });
 
-    console.log(`Number of students: ${fieldCounts['CS'].count + fieldCounts['SWE'].count}`);
-    for (const field in fieldCounts) {
-      if (field !== 'firstname') {
-        console.log(`Number of students in ${field}: ${fieldCounts[field].count}. List: ${fieldCounts[field].names.join(', ')}`);
+    console.log(`Number of students: ${totalStudents}`);
+    for (const field in studentsByField) {
+      if (Object.prototype.hasOwnProperty.call(studentsByField, field)) {
+        const { count, list } = studentsByField[field];
+        console.log(`Number of students in ${field}: ${count}. List: ${list.join(', ')}`);
       }
     }
   } catch (error) {
@@ -39,4 +40,5 @@ function countStudents(path) {
   }
 }
 
-module.exports = countStudents;
+const databasePath = 'database.csv';
+countStudents(databasePath);
