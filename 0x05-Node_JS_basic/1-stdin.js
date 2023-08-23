@@ -15,8 +15,8 @@ function runProgram() {
       rl.close();
     } else {
       const ls = spawn('ls', ['-lh', '/usr']);
+      // eslint-disable-next-line no-unused-vars
       ls.stdout.on('data', (data) => {
-	// data not used intentionally
         console.log(`Your name is: ${name}`);
       });
     }
