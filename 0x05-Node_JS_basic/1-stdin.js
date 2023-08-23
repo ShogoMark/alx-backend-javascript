@@ -17,6 +17,7 @@ function runProgram() {
       const ls = spawn('ls', ['-lh', '/usr']);
       ls.stdout.on('data', (data) => {
         console.log(`Your name is: ${name}`);
+        console.log(`ls command output:\n${data}`);
       });
     }
   });
@@ -25,5 +26,5 @@ function runProgram() {
 module.exports = runProgram;
 
 if (require.main === module) {
-	  runProgram();
+  runProgram();
 }
