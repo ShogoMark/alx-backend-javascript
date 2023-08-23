@@ -42,3 +42,5 @@ function countStudents(path) {
 
 const databasePath = 'database.csv';
 countStudents(databasePath);
+
+module.exports = countStudents;
