@@ -14,14 +14,14 @@ function runProgram() {
         console.log('This important software is now closing');
         rl.close();
       } else {
-        console.log(`Your name is: ${name}`);
+        console.log(`Your name is: ${name}\r`);
         console.log('This important software is now closing');
         rl.close();
       }
     });
   } else {
     rl.on('line', (name) => {
-      console.log(`Your name is: ${name}`);
+      console.log(`Your name is: ${name}\r`);
       console.log('This important software is now closing');
       rl.close();
     });
