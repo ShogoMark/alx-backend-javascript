@@ -1,35 +1,13 @@
-const readline = require('readline');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-function runProgram() {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+process.stdin.on('readable', () => {
+  const name = process.stdin.read();
 
-  console.log('Welcome to Holberton School, what is your name?');
-
-  if (process.stdin.isTTY) {
-    rl.on('line', (name) => {
-      if (name.trim() === '') {
-        console.log('This important software is now closing');
-        rl.close();
-      } else {
-        console.log(`Your name is: ${name}`);
-        console.log('This important software is now closing');
-        rl.close();
-      }
-    });
-  } else {
-    rl.on('line', (name) => {
-      console.log(`Your name is: ${name}`);
-      console.log('This important software is now closing');
-      rl.close();
-    });
+  if (name) {
+    process.stdout.write(`Your name is: ${name}`);
   }
-}
+});
 
-module.exports = runProgram;
-
-if (require.main === module) {
-  runProgram();
-}
+process.stdin.on('end', () => {
+  process.stdout.write('This important software is now closing\n');
+});
