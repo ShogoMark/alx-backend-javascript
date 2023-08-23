@@ -18,7 +18,7 @@ function runProgram() {
       // eslint-disable-next-line no-unused-vars
       ls.stdout.on('data', (data) => {
         console.log(`Your name is: ${name}\r`);
-	console.log(data.toString());
+        console.log(data.toString());
       });
     }
   });
