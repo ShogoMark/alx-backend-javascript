@@ -16,5 +16,4 @@ describe('calculateNumber', function() {
     const result = calculateNumber(0, 1);
     assert.strictEqual(result, 1);
   });
-
 });
